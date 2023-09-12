@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "categories",
+  "collectionName": "courses",
   "info": {
-    "singularName": "category",
-    "pluralName": "categories",
-    "displayName": "Category"
+    "singularName": "course",
+    "pluralName": "courses",
+    "displayName": "Course"
   },
   "options": {
     "draftAndPublish": true
@@ -31,8 +31,8 @@
         }
       },
       "type": "uid",
-      "targetField": "title",
-      "required": false
+      "required": false,
+      "targetField": "title"
     },
     "description": {
       "pluginOptions": {
@@ -40,37 +40,29 @@
           "localized": true
         }
       },
-      "type": "text"
+      "type": "richtext"
     },
-    "cover": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "featured": {
+    "material": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "boolean",
-      "default": false
+      "type": "richtext"
     },
-    "courses": {
+    "price": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "decimal"
+    },
+    "category": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::course.course",
-      "mappedBy": "category"
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "courses"
     }
   }
 }
